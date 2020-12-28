@@ -12,8 +12,6 @@
 # Happy Coding!
 
 service: init-user
-custom:
-  stage: ${opt:stage, self:provider.stage}
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
 #org: your-org-name
@@ -60,7 +58,7 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  initUser:
+  hello:
     handler: handler.initUser
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
