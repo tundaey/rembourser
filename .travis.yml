@@ -16,10 +16,6 @@ script:
 jobs:
   include:
     -
-      name: "Deploy User Init API"
-      env:
-        - SERVICE_PATH="init-user"
-    -
       name: "Deploy Create Post API"
       env:
         - SERVICE_PATH="create-post"
