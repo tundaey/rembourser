@@ -11,16 +11,20 @@ install:
     - cd ${SERVICE_PATH}
     - travis_retry yarn install
     - cd -
-script:
-    - cd api
-    - yarn run jest
-    - cd -
+# script:
+#     - cd api
+#     - yarn run jest
+#     - cd -
 jobs:
   include:
     -
       name: "Deploy API"
       env:
         - SERVICE_PATH="api"
+      script:
+        - cd api
+        - yarn run jest
+        - cd -
     -
       name: "Deploy Webapp"
       env:
