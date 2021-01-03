@@ -161,7 +161,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/rembourser-api/staging/1609671061833-2021-01-03T10:51:01.833Z/rembourser-api.zip"
+          "S3Key": "serverless/rembourser-api/staging/1609675963678-2021-01-03T12:12:43.678Z/rembourser-api.zip"
         },
         "Handler": "src/apollo-server.graphqlHandler",
         "Runtime": "nodejs12.x",
@@ -179,14 +179,14 @@
         "GraphqlLogGroup"
       ]
     },
-    "GraphqlLambdaVersiony1IHRVPLIw6gOAtUcs1KeqB8XQMk8P7GdOQjgcaL0": {
+    "GraphqlLambdaVersionw7VCvQ71bcITKT22td9k5YQj4ZmgVRzsdySERqPU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GraphqlLambdaFunction"
         },
-        "CodeSha256": "5paT1tbBvT5spj7OAnsRnLs8mt4yafZBJkA5epejkD0="
+        "CodeSha256": "weZvrdwOxdoSdaGciHvcdX5nH1CzXabI6hM9bAqb654="
       }
     },
     "ApiGatewayRestApi": {
@@ -347,7 +347,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1609671042644": {
+    "ApiGatewayDeployment1609675942007": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -408,7 +408,7 @@
     "GraphqlLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GraphqlLambdaVersiony1IHRVPLIw6gOAtUcs1KeqB8XQMk8P7GdOQjgcaL0"
+        "Ref": "GraphqlLambdaVersionw7VCvQ71bcITKT22td9k5YQj4ZmgVRzsdySERqPU"
       }
     },
     "ServiceEndpoint": {

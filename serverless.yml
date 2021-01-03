@@ -18,7 +18,15 @@ functions:
 plugins: 
   - serverless-webpack
   - serverless-offline
+  - serverless-domain-manager
 custom:
   stage: ${opt:stage, self:provider.stage}
+  customDomain:
+    domainName: api.rembourser.io
+    basePath: 'v1'
+    # stage: ${self:provider.stage}
+    stage: staging
+    certificateName: rembourser.io
+    createRoute53Record: true
   webpack:
     includeModules: true
