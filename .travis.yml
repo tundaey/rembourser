@@ -11,8 +11,8 @@ install:
     - cd ${SERVICE_PATH}
     - travis_retry yarn install
     - cd -
-script:
-    - yarn run jest
+# script:
+#     - yarn run jest
 jobs:
   include:
     -
