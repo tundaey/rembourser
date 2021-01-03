@@ -16,9 +16,13 @@ script:
 jobs:
   include:
     -
-      name: "Deploy Create Post API"
+      name: "Deploy API"
       env:
-        - SERVICE_PATH="src"
+        - SERVICE_PATH="api"
+    -
+      name: "Deploy Webapp"
+      env:
+        - SERVICE_PATH="webapp"
 deploy:
   provider: script
   script: bash bin/deploy

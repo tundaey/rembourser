@@ -1,0 +1,13 @@
+
+service: create-post
+custom:
+  stage: ${opt:stage, self:provider.stage}
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+functions:
+  hello:
+    handler: handler.createPost
