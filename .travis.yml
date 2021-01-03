@@ -18,7 +18,7 @@ jobs:
     -
       name: "Deploy Create Post API"
       env:
-        - SERVICE_PATH="api"
+        - SERVICE_PATH="src"
 deploy:
   provider: script
   script: bash bin/deploy
