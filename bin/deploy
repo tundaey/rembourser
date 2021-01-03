@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
 cd ${SERVICE_PATH}
-echo "tunde"s
 serverless deploy -s ${STAGE_NAME}
 cd -
