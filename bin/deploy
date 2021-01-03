@@ -2,5 +2,6 @@
 
 # cd ${SERVICE_PATH}
 echo "tunde"
+ls
 serverless deploy -s ${STAGE_NAME}
 cd -
