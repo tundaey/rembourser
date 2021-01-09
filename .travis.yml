@@ -20,6 +20,13 @@ matrix:
         #     bash bin/deployStaging
         #   fi'
         # - ng build --prod
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: bash bin/deploy
+        on:
+          all_branches: true
+          condition: $TRAVIS_BRANCH =~ ^(master|staging)$
     - language: node.js
       node_js: "12.0"
       before_script:
@@ -27,10 +34,17 @@ matrix:
       script:
         - travis_retry yarn install
         - yarn run build
-deploy:
-  provider: script
-  skip_cleanup: true
-  script: bash bin/deploy
-  on:
-    all_branches: true
-    condition: $TRAVIS_BRANCH =~ ^(master|staging)$
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: bash bin/deploy
+        on:
+          all_branches: true
+          condition: $TRAVIS_BRANCH =~ ^(master|staging)$
+# deploy:
+#   provider: script
+#   skip_cleanup: true
+#   script: bash bin/deploy
+#   on:
+#     all_branches: true
+#     condition: $TRAVIS_BRANCH =~ ^(master|staging)$
