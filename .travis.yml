@@ -26,10 +26,10 @@ jobs:
       name: "Deploy API"
       env:
         - SERVICE_PATH="api"
-    -
-      name: "Deploy Webapp"
-      env:
-        - SERVICE_PATH="webapp"
+    # -
+    #   name: "Deploy Webapp"
+    #   env:
+    #     - SERVICE_PATH="webapp"
 deploy:
   provider: script
   script: bash bin/deploy
