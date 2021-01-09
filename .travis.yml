@@ -1,35 +1,28 @@
-language: node_js
-node_js:
-  - "10"
-cache:
-  directories:
-    - node_modules
-    - ${SERVICE_PATH}/node_modules
-install:
-    - yarn global add serverless
-    - travis_retry yarn install
-    - cd ${SERVICE_PATH}
-    - travis_retry yarn install
-    - cd -
-# script:
-#     - cd api
-#     - yarn run jest
-#     - cd -
-jobs:
+matrix:
   include:
-    # - stage: "Tests"
-    #   script:
-    #     - cd api
-    #     - yarn run jest
-    #     - cd -
-    # -
-      name: "Deploy API"
-      env:
-        - SERVICE_PATH="api"
-    # -
-    #   name: "Deploy Webapp"
-    #   env:
-    #     - SERVICE_PATH="webapp"
+    - language: node.js
+      node_js: "12.0"
+      before_script:
+        - cd api
+      cache:
+        directories:
+          - node_modules
+      install:
+        - yarn global add serverless
+        - travis_retry yarn install
+        # - cd ${SERVICE_PATH}
+        # - travis_retry yarn install
+        # - cd -
+      script:
+        - yarn run jest
+        # - ng build --prod
+    - language: node.js
+      node_js: "12.0"
+      before_script:
+        - cd webapp
+      script:
+        - travis_retry yarn install
+        - yarn run build
 deploy:
   provider: script
   script: bash bin/deploy
