@@ -44,6 +44,7 @@ matrix:
         bucket: "app.rembourser.io"
         skip_cleanup: true
         local_dir: dist
+        region: $AWS_REGION
         on:
           all_branches: true
           condition: $TRAVIS_BRANCH =~ ^(master|staging)$
