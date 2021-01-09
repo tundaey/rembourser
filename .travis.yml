@@ -49,6 +49,7 @@ matrix:
           all_branches: true
           condition: $TRAVIS_BRANCH =~ ^(master|staging)$
       after_deploy:
+        - aws configure set preview.cloudfront true
         - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"
 
 # deploy:
