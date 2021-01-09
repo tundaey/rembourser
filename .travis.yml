@@ -16,6 +16,9 @@ matrix:
       script:
         - travis_retry yarn install
         - yarn run jest
+        - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+            bash bin/deployStaging
+          fi'
         # - ng build --prod
     - language: node.js
       node_js: "12.0"
