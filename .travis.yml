@@ -48,6 +48,9 @@ matrix:
         on:
           all_branches: true
           condition: $TRAVIS_BRANCH =~ ^(master|staging)$
+      after_deploy:
+        script: aws cloudfront create-invalidation --distribution-id EG44XQRMFC0YP0 --paths "/*"
+
 # deploy:
 #   provider: script
 #   skip_cleanup: true
