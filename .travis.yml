@@ -17,12 +17,12 @@ install:
 #     - cd -
 jobs:
   include:
-    - stage: "Tests"
-      script:
-        - cd api
-        - yarn run jest
-        - cd -
-    -
+    # - stage: "Tests"
+    #   script:
+    #     - cd api
+    #     - yarn run jest
+    #     - cd -
+    # -
       name: "Deploy API"
       env:
         - SERVICE_PATH="api"
