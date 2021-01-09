@@ -2,7 +2,7 @@ import * as React from "react";
 import ReactDOM from "react-dom";
 
 function App () {
- return <h1>This is my amazing app</h1>
+ return <h1>{'Welcome to rembourser.io'}</h1>
 }
 
 const mount = document.getElementById("app");
