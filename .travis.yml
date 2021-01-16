@@ -1,5 +1,6 @@
 matrix:
   include:
+    name: "Deploy API"
     - language: node.js
       node_js: "12.0"
       before_script:
