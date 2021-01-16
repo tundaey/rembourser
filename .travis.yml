@@ -22,7 +22,9 @@ matrix:
         on:
           all_branches: true
           condition: $TRAVIS_BRANCH =~ ^(master|staging)$
-    - language: node.js
+    - 
+      name: "Depoy Webapp"
+      language: node.js
       node_js: "12.0"
       before_script:
         - cd webapp
