@@ -51,7 +51,7 @@ matrix:
           all_branches: true
           condition: $TRAVIS_BRANCH =~ ^(master|staging)$
       after_deploy:
-        - travis-ci-cloudfront-invalidation -a $AWS_ACCESS_KEY_ID -s $AWS_SECRET_ACCESS_KEY -c $DISTRIBUTION_ID -i '/*' -b $TRAVIS_BRANCH -p $TRAVIS_PULL_REQUEST
+        - travis-ci-cloudfront-invalidation -a $AWS_ACCESS_KEY_ID -s $AWS_SECRET_ACCESS_KEY -c $DISTRIBUTION_ID -i '/*' -b $TRAVIS_BRANCH -p $TRAVIS_PULL_REQUEST -o master,staging
         # - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"
 
 # deploy:
