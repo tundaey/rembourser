@@ -31,6 +31,8 @@ matrix:
       node_js: "12.0"
       before_script:
         - cd webapp
+      install:
+        - yarn global add travis-ci-cloudfront-invalidation
       script:
         - travis_retry yarn install
         - yarn run build
