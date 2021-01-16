@@ -24,8 +24,8 @@ custom:
   customDomain:
     domainName: api.rembourser.io
     basePath: ''
-    # stage: ${self:provider.stage}
-    stage: staging
+    stage: ${self:provider.stage}
+    # stage: staging
     certificateName: rembourser.io
     createRoute53Record: true
   webpack:
