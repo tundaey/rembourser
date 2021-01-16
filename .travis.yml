@@ -1,26 +1,27 @@
 matrix:
   include:
-  - name: "Deploy API"
-  language: node.js
-  node_js: "12.0"
-  before_script:
-    - cd api
-  cache:
-    directories:
-      - node_modules
-  install:
-    - yarn global add serverless
-    - travis_retry yarn install
-  script:
-    - travis_retry yarn install
-    - yarn run jest
-  deploy:
-    provider: script
-    skip_cleanup: true
-    script: bash bin/deploy
-    on:
-      all_branches: true
-      condition: $TRAVIS_BRANCH =~ ^(master|staging)$
+    - 
+      name: "Deploy API"
+      language: node.js
+      node_js: "12.0"
+      before_script:
+        - cd api
+      cache:
+        directories:
+          - node_modules
+      install:
+        - yarn global add serverless
+        - travis_retry yarn install
+      script:
+        - travis_retry yarn install
+        - yarn run jest
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: bash bin/deploy
+        on:
+          all_branches: true
+          condition: $TRAVIS_BRANCH =~ ^(master|staging)$
     - language: node.js
       node_js: "12.0"
       before_script:
