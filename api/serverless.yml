@@ -23,7 +23,7 @@ custom:
   stage: ${opt:stage, self:provider.stage}
   customDomain:
     domainName: api.rembourser.io
-    basePath: 'v1'
+    basePath: ''
     # stage: ${self:provider.stage}
     stage: staging
     certificateName: rembourser.io
