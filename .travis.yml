@@ -10,16 +10,9 @@ matrix:
       install:
         - yarn global add serverless
         - travis_retry yarn install
-        # - cd ${SERVICE_PATH}
-        # - travis_retry yarn install
-        # - cd -
       script:
         - travis_retry yarn install
         - yarn run jest
-        # - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-        #     bash bin/deployStaging
-        #   fi'
-        # - ng build --prod
       deploy:
         provider: script
         skip_cleanup: true
@@ -37,9 +30,6 @@ matrix:
         - travis_retry yarn install
         - yarn run build
       deploy:
-        # provider: script
-        # skip_cleanup: true
-        # script: bash bin/deploy
         provider: s3
         access_key_id: $AWS_ACCESS_KEY_ID
         secret_access_key: $AWS_SECRET_ACCESS_KEY
@@ -52,12 +42,3 @@ matrix:
           condition: $TRAVIS_BRANCH =~ ^(master|staging)$
       after_deploy:
         - travis-ci-cloudfront-invalidation -a $AWS_ACCESS_KEY_ID -s $AWS_SECRET_ACCESS_KEY -c $DISTRIBUTION_ID -i '/*' -b $TRAVIS_BRANCH -p $TRAVIS_PULL_REQUEST -o master,staging
-        # - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"
-
-# deploy:
-#   provider: script
-#   skip_cleanup: true
-#   script: bash bin/deploy
-#   on:
-#     all_branches: true
-#     condition: $TRAVIS_BRANCH =~ ^(master|staging)$
