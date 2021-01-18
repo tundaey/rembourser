@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
+echo "view stage name"
+echo ${STAGE_NAME}
 serverless deploy -s ${STAGE_NAME}
 # cd -
