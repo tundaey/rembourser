@@ -74,7 +74,7 @@
     "GraphqlLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/rembourser-api-prod-graphql"
+        "LogGroupName": "/aws/lambda/rembourser-api-staging-graphql"
       }
     },
     "IamRoleLambdaExecution": {
@@ -103,7 +103,7 @@
                 "-",
                 [
                   "rembourser-api",
-                  "prod",
+                  "staging",
                   "lambda"
                 ]
               ]
@@ -119,7 +119,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/rembourser-api-prod*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/rembourser-api-staging*:*"
                     }
                   ]
                 },
@@ -130,7 +130,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/rembourser-api-prod*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/rembourser-api-staging*:*:*"
                     }
                   ]
                 }
@@ -144,7 +144,7 @@
             "-",
             [
               "rembourser-api",
-              "prod",
+              "staging",
               {
                 "Ref": "AWS::Region"
               },
@@ -161,11 +161,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/rembourser-api/prod/1610816838612-2021-01-16T17:07:18.612Z/rembourser-api.zip"
+          "S3Key": "serverless/rembourser-api/staging/1610953988574-2021-01-18T07:13:08.574Z/rembourser-api.zip"
         },
         "Handler": "src/apollo-server.graphqlHandler",
         "Runtime": "nodejs12.x",
-        "FunctionName": "rembourser-api-prod-graphql",
+        "FunctionName": "rembourser-api-staging-graphql",
         "MemorySize": 1024,
         "Timeout": 6,
         "Role": {
@@ -179,20 +179,20 @@
         "GraphqlLogGroup"
       ]
     },
-    "GraphqlLambdaVersionLxzOU2gNfsVQEHPM5TbUPnjMFF2wxPH1NnBxnbgOXOI": {
+    "GraphqlLambdaVersionUhji4gsPcHmsxlmkawm0QXnQUGiuq6aRDO9p1Jlsgk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GraphqlLambdaFunction"
         },
-        "CodeSha256": "2sbLKPL2/I2+SvV8IGGhzzvodbKW8B/l68/w5B5z3AE="
+        "CodeSha256": "y0Ote32eY68LHyENzbG+D6XVJQgMnN+umiYj0sS3AaY="
       }
     },
     "ApiGatewayRestApi": {
       "Type": "AWS::ApiGateway::RestApi",
       "Properties": {
-        "Name": "prod-rembourser-api",
+        "Name": "staging-rembourser-api",
         "EndpointConfiguration": {
           "Types": [
             "EDGE"
@@ -347,13 +347,13 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1610816820744": {
+    "ApiGatewayDeployment1610953970138": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         },
-        "StageName": "prod"
+        "StageName": "staging"
       },
       "DependsOn": [
         "ApiGatewayMethodGraphqlOptions",
@@ -408,7 +408,7 @@
     "GraphqlLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GraphqlLambdaVersionLxzOU2gNfsVQEHPM5TbUPnjMFF2wxPH1NnBxnbgOXOI"
+        "Ref": "GraphqlLambdaVersionUhji4gsPcHmsxlmkawm0QXnQUGiuq6aRDO9p1Jlsgk"
       }
     },
     "ServiceEndpoint": {
@@ -429,7 +429,7 @@
             {
               "Ref": "AWS::URLSuffix"
             },
-            "/prod"
+            "/staging"
           ]
         ]
       }
