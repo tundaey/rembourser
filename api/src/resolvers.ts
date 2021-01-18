@@ -1,5 +1,5 @@
 export const resolvers = {
   Query: {
-    testMessage: () => 'Hello World to my change'
+    testMessage: () => 'Hello World to my change on staging'
   }
 }
