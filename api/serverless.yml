@@ -1,0 +1,34 @@
+service: rembourser-api
+provider: 
+  name: aws
+  runtime: nodejs12.x
+  region: eu-west-2
+  stage: ${opt:stage}
+functions:
+  graphql:
+    handler: src/apollo-server.graphqlHandler
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+      - http:
+          path: graphql
+          method: get
+          cors: true
+plugins: 
+  - serverless-webpack
+  - serverless-offline
+  - serverless-domain-manager
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  customDomain:
+    domainName: api.rembourser.io
+    basePath: ${self:provider.stage}
+    stage: ${self:provider.stage}
+    # stage: ${opt:stage, self:provider.stage}
+    # stage: staging
+    certificateName: rembourser.io
+    createRoute53Record: true
+  webpack:
+    includeModules: true

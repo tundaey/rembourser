@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+cd ${SERVICE_PATH}
+serverless deploy -s ${STAGE_NAME}
+cd -

@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
 cd ${SERVICE_PATH}
-serverless deploy -s ${STAGE_NAME}
+if [ ${SERVICE_PATH} = api ]
+then
+  serverless deploy -s ${STAGE_NAME}
+else
+  yarn build
+  aws s3 sync dist/ s3://app.rembourser.io
+fi
+# serverless deploy -s ${STAGE_NAME}
+# aws s3 sync build/ s3://app.rembourser.io
+# aws cloudfront create-invalidation --distribution-id XXXXXX --paths "/*"
 cd -
