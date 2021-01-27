@@ -1,0 +1,14 @@
+{
+	"sqltools.connections": [
+		{
+			"database": "rembourser_dev",
+			"driver": "PostgreSQL",
+			"name": "rembourser",
+			"password": "7Kd^?fj3Hf),]`yE",
+			"port": 5432,
+			"previewLimit": 50,
+			"server": "localhost",
+			"username": "rembourser_api"
+		}
+	]
+}

@@ -32,3 +32,7 @@ custom:
     createRoute53Record: true
   webpack:
     includeModules: true
+  serverless-offline:
+    lambdaPort: 4002
+    httpPort: 4000
+    stage: dev
