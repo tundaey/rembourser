@@ -7,6 +7,8 @@ provider:
 functions:
   graphql:
     handler: src/apollo-server.graphqlHandler
+    environment:
+      TAGGUN_API_KEY: ${opt:TAGGUN_API_KEY}
     events:
       - http:
           path: graphql
