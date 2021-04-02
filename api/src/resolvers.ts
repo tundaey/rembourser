@@ -7,6 +7,8 @@ export const resolvers = {
   Mutation: {
     // uploadReceipt: async (_, { email }, { dataSources }) => {
     uploadReceipt: async () => {
+      const apikey = process.env.TAGGUN_API_KEY;
+      console.log('process', apikey)
       const resp = await axios.post('https://api.taggun.io/api/receipt/v1/simple/url', {
         url: "https://rembourser-receipts.s3.eu-west-2.amazonaws.com/himreceipt.jpeg",
         refresh: true,
@@ -14,12 +16,12 @@ export const resolvers = {
         ipAddress: "32.4.2.223"
       }, {
         headers: {
-          apikey: '5c09d750869511eb89ec8f979872d304'
+          apikey,
 
         }
       })
 
-      console.log('res', resp)
+      // console.log('res', resp)
       return 'Uploaded'
     },
 
