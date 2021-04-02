@@ -1,4 +1,5 @@
 service: rembourser-api
+useDotenv: true
 provider: 
   name: aws
   runtime: nodejs12.x
@@ -7,6 +8,8 @@ provider:
 functions:
   graphql:
     handler: src/apollo-server.graphqlHandler
+    environment:
+      TAGGUN_API_KEY: ${ssm:/TAGGUN_API_KEY~true}
     events:
       - http:
           path: graphql
@@ -26,8 +29,6 @@ custom:
     domainName: api.rembourser.io
     basePath: ${self:provider.stage}
     stage: ${self:provider.stage}
-    # stage: ${opt:stage, self:provider.stage}
-    # stage: staging
     certificateName: rembourser.io
     createRoute53Record: true
   webpack:
