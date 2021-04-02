@@ -9,7 +9,6 @@ functions:
   graphql:
     handler: src/apollo-server.graphqlHandler
     environment:
-      # TAGGUN_API_KEY: ${env:TAGGUN_API_KEY}
       TAGGUN_API_KEY: ${ssm:/TAGGUN_API_KEY~true}
     events:
       - http:
@@ -30,8 +29,6 @@ custom:
     domainName: api.rembourser.io
     basePath: ${self:provider.stage}
     stage: ${self:provider.stage}
-    # stage: ${opt:stage, self:provider.stage}
-    # stage: staging
     certificateName: rembourser.io
     createRoute53Record: true
   webpack:
